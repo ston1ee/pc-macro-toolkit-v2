@@ -1,0 +1,47 @@
+{
+  "name": "pc-macro-toolkit-v2",
+  "version": "2.0.0",
+  "description": "Modern Electron-based macro toolkit with recording and playback capabilities",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --exec electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "lint": "eslint ."
+  },
+  "keywords": ["macro", "automation", "electron", "hotkey", "recorder"],
+  "author": "ston1ee",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^28.0.0",
+    "@nut-tree/nut-js": "^4.2.0",
+    "electron-localshortcut": "^3.2.1"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.9.1",
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.2"
+  },
+  "build": {
+    "appId": "com.ston1ee.pcmacrotoolkit",
+    "productName": "PC Macro Toolkit",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": ["nsis"],
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "build/icon.icns"
+    },
+    "linux": {
+      "target": ["AppImage"],
+      "icon": "build/icon.png"
+    }
+  }
+}
