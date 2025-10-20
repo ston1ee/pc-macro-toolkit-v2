@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>PC Macro Toolkit</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+  <div class="container">
+    <header>
+      <h1>🎮 PC Macro Toolkit v2</h1>
+      <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-button active" data-tab="macro">Macro Recorder</button>
+      <button class="tab-button" data-tab="clicker">Auto Clicker</button>
+      <button class="tab-button" data-tab="keypresser">Key Presser</button>
+    </nav>
+
+    <main>
+      <!-- Macro Recorder Tab -->
+      <section id="macro-tab" class="tab-content active">
+        <div class="card">
+          <h2>Macro Recording & Playback</h2>
+          
+          <div class="info-box">
+            <p><strong>Global Hotkeys:</strong></p>
+            <ul>
+              <li><kbd>F9</kbd> - Start/Stop Recording</li>
+              <li><kbd>F10</kbd> - Play Macro</li>
+              <li><kbd>F11</kbd> - Stop Playback</li>
+            </ul>
+          </div>
+
+          <div class="controls">
+            <button id="record-btn" class="btn btn-primary">Start Recording (F9)</button>
+            <button id="play-btn" class="btn btn-success" disabled>Play Macro (F10)</button>
+            <button id="stop-btn" class="btn btn-danger" disabled>Stop Playback (F11)</button>
+          </div>
+
+          <div class="controls">
+            <button id="clear-btn" class="btn btn-secondary">Clear Macro</button>
+            <button id="save-macro-btn" class="btn btn-secondary">Save Macro</button>
+            <button id="load-macro-btn" class="btn btn-secondary">Load Macro</button>
+          </div>
+
+          <div id="macro-status" class="status idle">Ready to record</div>
+
+          <div class="macro-events-container">
+            <h3>Recorded Events</h3>
+            <div id="macro-events" class="macro-events">
+              <div class="no-events">No events recorded</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Auto Clicker Tab -->
+      <section id="clicker-tab" class="tab-content">
+        <div class="card">
+          <h2>Auto Clicker</h2>
+          
+          <div class="info-box">
+            <p>Automatically click at specified intervals. Useful for repetitive clicking tasks.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="clicker-interval">Click Interval (ms):</label>
+            <input type="number" id="clicker-interval" value="1000" min="10" step="10">
+            <small>Minimum: 10ms</small>
+          </div>
+
+          <div class="form-group">
+            <label for="clicker-button">Mouse Button:</label>
+            <select id="clicker-button">
+              <option value="LEFT">Left Click</option>
+              <option value="RIGHT">Right Click</option>
+              <option value="MIDDLE">Middle Click</option>
+            </select>
+          </div>
+
+          <div class="controls">
+            <button id="start-clicker-btn" class="btn btn-primary">Start Auto Clicker</button>
+            <button id="stop-clicker-btn" class="btn btn-danger" disabled>Stop Auto Clicker</button>
+          </div>
+
+          <div id="clicker-status" class="status idle">Auto-clicker idle</div>
+
+          <div class="warning-box">
+            <strong>⚠️ Warning:</strong> Use responsibly. Some applications may detect and block automated clicking.
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Presser Tab -->
+      <section id="keypresser-tab" class="tab-content">
+        <div class="card">
+          <h2>Key Presser</h2>
+          
+          <div class="info-box">
+            <p>Automatically press a key at specified intervals. Great for games and repetitive tasks.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="keypresser-interval">Press Interval (ms):</label>
+            <input type="number" id="keypresser-interval" value="1000" min="10" step="10">
+            <small>Minimum: 10ms</small>
+          </div>
+
+          <div class="form-group">
+            <label for="keypresser-key">Key to Press:</label>
+            <select id="keypresser-key">
+              <option value="Space">Space</option>
+              <option value="Enter">Enter</option>
+              <option value="A">A</option>
+              <option value="W">W</option>
+              <option value="S">S</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="Num1">1</option>
+              <option value="Num2">2</option>
+              <option value="Num3">3</option>
+              <option value="Num4">4</option>
+              <option value="Num5">5</option>
+            </select>
+          </div>
+
+          <div class="controls">
+            <button id="start-keypresser-btn" class="btn btn-primary">Start Key Presser</button>
+            <button id="stop-keypresser-btn" class="btn btn-danger" disabled>Stop Key Presser</button>
+          </div>
+
+          <div id="keypresser-status" class="status idle">Key presser idle</div>
+
+          <div class="warning-box">
+            <strong>⚠️ Warning:</strong> Use responsibly. Some games may detect and ban automated key pressing.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>PC Macro Toolkit v2.0.0 | Made with Electron & nut.js</p>
+      <p><small>Use responsibly and follow terms of service of applications you use this with.</small></p>
+    </footer>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
